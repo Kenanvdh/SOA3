@@ -1,5 +1,10 @@
-# Prerequisites
-**.vs
-**\bin
-**\obj
+BioscoopConsole/BioscoopConsole/bin/
+BioscoopConsole/BioscoopConsole/obj/
+
+BioscoopConsole/BioscoopConsole.Domain/bin/
+BioscoopConsole/BioscoopConsole.Domain/obj/
+.vs/
+
+*.json
+
 
