@@ -13,8 +13,7 @@
 
         public double GetPricePerSeat()
         {
-            return 0.0;
-
+            return this.PricePerSeat;
         }
 
         public DateTime GetDateAndTime()

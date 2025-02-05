@@ -35,8 +35,7 @@
 
         public double GetPrice()
         {
-
-            return 0.0;
+            return screening.GetPricePerSeat();
         }
 
         public string ToString()

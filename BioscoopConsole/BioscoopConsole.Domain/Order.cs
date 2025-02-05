@@ -36,6 +36,16 @@
                     price = 0;
                 }
 
+                if(IsStudentOrder && tickets[i].IsPremiumTicket())
+                {
+                    price += 2;
+                }
+                
+                else if (!IsStudentOrder && tickets[i].IsPremiumTicket())
+                {
+                    price += 3;
+                }
+
                 totalPrice += price;
 
                 if (numOfTickets >= 6 && !IsStudentOrder && !tickets[i].IsWeekday())
