@@ -11,7 +11,20 @@
             this.PricePerSeat = PricePerSeat;
         }
 
-        public double GetPricePerSeat() { }
-        public string ToString() { }
+        public double GetPricePerSeat()
+        {
+            return 0.0;
+
+        }
+
+        public DateTime GetDateAndTime()
+        {
+            return this.DateAndTime;
+        }
+
+        public string ToString()
+        {
+            return "";
+        }
     }
 }

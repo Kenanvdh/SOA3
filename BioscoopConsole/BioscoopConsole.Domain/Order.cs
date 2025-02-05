@@ -4,6 +4,7 @@
     {
         private int OrderNr { get; set; }
         private bool IsStudentOrder { get; set; }
+        List<MovieTicket> tickets { get; set; }
 
         public Order(int OrderNr, bool IsStudentOrder)
         {
@@ -18,17 +19,38 @@
 
         public void AddSeatReservation(MovieTicket ticket)
         {
-
+            tickets.Add(ticket);
         }
 
         public double CalculatePrice()
         {
-            return 0.0;
+            double totalPrice = 0;
+
+            var numOfTickets = tickets.Count;
+
+            for (int i = 0; i < tickets.Count(); i++)
+            {
+                double price = tickets[i].GetPrice();
+                if (i % 2 == 1 && (IsStudentOrder || tickets[i].IsWeekday()))
+                {
+                    price = 0;
+                }
+
+                totalPrice += price;
+
+                if (numOfTickets >= 6 && !IsStudentOrder && !tickets[i].IsWeekday())
+                {
+                    totalPrice *= 0.9;
+                }
+            }
+
+            return totalPrice;
         }
 
         public void Export(TicketExportFormat exportFormat)
         {
-
         }
     }
 }
+
+

@@ -5,12 +5,14 @@
         private int RowNr { get; set; }
         private int SeatNr { get; set; }
         private bool IsPremium { get; set; }
+        private MovieScreening screening { get; init; }
 
-        public MovieTicket(int rowNr, int seatNr, bool isPremium)
+        public MovieTicket(int rowNr, int seatNr, bool isPremium, MovieScreening screening)
         {
             RowNr = rowNr;
             SeatNr = seatNr;
             IsPremium = isPremium;
+            this.screening = screening;
         }
 
         public bool IsPremiumTicket()
@@ -22,8 +24,18 @@
             return false;
         }
 
-        public double getPrice()
+        public bool IsWeekday()
         {
+            if (screening.GetDateAndTime().DayOfWeek >= DayOfWeek.Monday || screening.GetDateAndTime().DayOfWeek <= DayOfWeek.Thursday)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public double GetPrice()
+        {
+
             return 0.0;
         }
 
