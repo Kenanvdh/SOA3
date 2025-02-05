@@ -1,3 +1,5 @@
 # Prerequisites
-*.vs
-*.obj
+**.vs
+**\bin
+**\obj
+
