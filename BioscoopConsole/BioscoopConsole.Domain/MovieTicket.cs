@@ -1,4 +1,6 @@
-﻿namespace BioscoopConsole.Domain
+﻿using System.Text;
+
+namespace BioscoopConsole.Domain
 {
     public class MovieTicket
     {
@@ -38,9 +40,14 @@
             return screening.GetPricePerSeat();
         }
 
-        public string ToString()
+        public override string ToString()
         {
-            return "";
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(screening.ToString());
+            sb.AppendLine("Row: " + RowNr);
+            sb.AppendLine("Seat: " + SeatNr);
+            sb.AppendLine("Is premium ticket: " + IsPremiumTicket());
+            return sb.ToString();
         }
     }
 }
