@@ -1,4 +1,6 @@
-﻿namespace BioscoopConsole.Domain
+﻿using System.Text.Json;
+
+namespace BioscoopConsole.Domain
 {
     public class Order
     {
@@ -6,10 +8,11 @@
         private bool IsStudentOrder { get; set; }
         List<MovieTicket> tickets { get; set; }
 
-        public Order(int OrderNr, bool IsStudentOrder)
+        public Order(int OrderNr, bool IsStudentOrder, List<MovieTicket> movieTickets)
         {
             this.OrderNr = OrderNr;
             this.IsStudentOrder = IsStudentOrder;
+            this.tickets = movieTickets;
         }
 
         public int GetOrderNr()
@@ -59,6 +62,14 @@
 
         public void Export(TicketExportFormat exportFormat)
         {
+            string content = string.Empty;
+            string fileName = $"Order_{OrderNr}.{(exportFormat == TicketExportFormat.JSON ? "json" : "txt")}";
+            foreach (var ticket in tickets)
+            {
+                content = exportFormat == TicketExportFormat.JSON ? JsonSerializer.Serialize(this) : ticket.ToString();
+            }
+            File.WriteAllText(fileName, content);
+            Console.WriteLine($"Order exported to {fileName}");
         }
     }
 }

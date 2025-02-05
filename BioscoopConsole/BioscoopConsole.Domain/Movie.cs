@@ -1,19 +1,27 @@
-﻿namespace BioscoopConsole.Domain
+﻿using System.Text;
+
+namespace BioscoopConsole.Domain
 {
     public class Movie
     {
         private string Title { get; set; }
+        private List<MovieScreening> Screens { get; set; }
 
-        public Movie(string Title)
+        public Movie(string Title, List<MovieScreening> screens)
         {
             this.Title = Title;
+            this.Screens = screens;
         }
 
-        public void AddScreening(MovieScreening screening) { }
+        public void AddScreening(MovieScreening screening) {
+            this.Screens.Add(screening);
+        }
 
-        public string ToString()
+        public override string ToString()
         {
-            return "";
+            StringBuilder sb = new StringBuilder();
+            sb.Append(Title);
+            return sb.ToString();
         }
 
     }
