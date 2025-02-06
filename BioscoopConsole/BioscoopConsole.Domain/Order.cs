@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using Newtonsoft.Json;
 
 namespace BioscoopConsole.Domain
 {
@@ -6,7 +7,7 @@ namespace BioscoopConsole.Domain
     {
         private int OrderNr { get; set; }
         private bool IsStudentOrder { get; set; }
-        List<MovieTicket> tickets { get; set; }
+        public List<MovieTicket> tickets { get; set; }
 
         public Order(int OrderNr, bool IsStudentOrder, List<MovieTicket> movieTickets)
         {
@@ -39,11 +40,11 @@ namespace BioscoopConsole.Domain
                     price = 0;
                 }
 
-                if(IsStudentOrder && tickets[i].IsPremiumTicket())
+                if (IsStudentOrder && tickets[i].IsPremiumTicket())
                 {
                     price += 2;
                 }
-                
+
                 else if (!IsStudentOrder && tickets[i].IsPremiumTicket())
                 {
                     price += 3;
@@ -64,12 +65,23 @@ namespace BioscoopConsole.Domain
         {
             string content = string.Empty;
             string fileName = $"Order_{OrderNr}.{(exportFormat == TicketExportFormat.JSON ? "json" : "txt")}";
-            foreach (var ticket in tickets)
+
+            if (exportFormat == TicketExportFormat.JSON)
             {
-                content = exportFormat == TicketExportFormat.JSON ? JsonSerializer.Serialize(this) : ticket.ToString();
+                content += JsonConvert.SerializeObject(tickets);
             }
-            File.WriteAllText(fileName, content);
-            Console.WriteLine($"Order exported to {fileName}");
+            else
+            {
+                foreach (var ticket in tickets)
+                {
+                    content += ticket.ToString();
+                }
+            }
+
+            string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), $"{fileName}");
+
+            File.WriteAllText(path, content);
+            Console.WriteLine($"Order exported to {path}");
         }
     }
 }
