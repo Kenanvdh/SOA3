@@ -15,7 +15,7 @@ jobs:
     runs-on: windows-latest
 
     env:
-      Solution_Name: BioscoopConsole/BioscoopConsole.sln  # Use forward slashes
+      Solution_Name: BioscoopConsole.sln  # Use forward slashes
       Test_Project_Path: BioscoopConsole.Test/BioscoopConsole.Test.csproj  # Use forward slashes
 
     steps:
