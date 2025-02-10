@@ -15,7 +15,7 @@ jobs:
     runs-on: windows-latest
 
     env:
-      Solution_Name: BioscoopConsole\BioscoopConsole.sln  
+      #Solution_Name: BioscoopConsole\BioscoopConsole.sln  
       
     steps:
     - name: Checkout
