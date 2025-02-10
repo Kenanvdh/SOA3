@@ -20,6 +20,7 @@ jobs:
     env:
       Solution_Name: /BioscoopConsole/BioscoopConsole.sln                         # Replace with your solution name, i.e. MyWpfApp.sln.
       Test_Project_Path: /BioscoopConsole.Test/BioscoopConsole.Test.csproj                 # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
+      DOTNET_ROOT: C:/Avans/Jaar_3/Software_Ontwerp_En_Architectuur/repo
 
     steps:
     - name: Checkout
