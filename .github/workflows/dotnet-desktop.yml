@@ -74,5 +74,5 @@ jobs:
       shell: powershell
       run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"Kenanvdh_SOA3" /o:"kenanvdh" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
-          dotnet build
+          dotnet build $env:Solution_Name
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
