@@ -16,7 +16,7 @@ jobs:
 
     env:
       Solution_Name: BioscoopConsole\BioscoopConsole.sln  
-      Test_Project_Path: BioscoopConsole.Test\BioscoopConsole.Test.csproj
+      Test_Project_Path: BioscoopConsole/BioscoopConsole.Test/BioscoopConsole.Test.csproj
       
     steps:
     - name: Checkout
